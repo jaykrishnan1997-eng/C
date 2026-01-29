@@ -5,5 +5,6 @@
 int main() {
     //print statement 
     printf("Hello World!\n");
+    //return statement indicating that program ended successfully
     return 0;
 }
