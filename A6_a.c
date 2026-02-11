@@ -1,4 +1,5 @@
 #include <stdio.h>
+// to incluse fmod(a,b), function to find modulo os two float
 #include <math.h>
 
 float add(float a, float b)
@@ -13,9 +14,6 @@ float multiply(float a, float b)
 float divide(float a, float b)
 {return a/b;}
 
-//float modulo(float a, float b)
-//{return a%b;}
-
 int main()
 {
 float a,b;
@@ -26,8 +24,11 @@ printf("Enter required operator: a/A for addition, s/S for subtraction, m/M for 
 scanf(" %c", &o);
 
 printf("Enter the two numbers:");
-// %c for character
-scanf("%f %f", &a, &b);
+//scanf tells you how many values it successfully match the required input. Here its 2 float 
+if (scanf("%f %f", &a, &b) != 2)
+  {printf("Invalid input"); return 1;}
+
+
 //'a' is character and "a" is string, %.3f is float and include to only 3 decimal place after decimal point
 if (o == 'a' || o == 'A')
 {printf("Sum of %f and %f is : %.3f\n",a,b,add(a,b));
@@ -40,7 +41,7 @@ return 0;}
 else if (o == 'm' || o == 'M') 
 {printf("Product of %f and %f is : %.3f\n",a,b,multiply(a,b));
 return 0;}
-
+//Include part to display "Not Defines if denominator is 0"
 else if (o == 'd' || o == 'D')
   {if (b == 0)
     {printf("Not Defined"); return 0;}
@@ -54,9 +55,9 @@ else if (o == 'r' || o == 'R')
   else 
     {printf("%f modulo %f is : %.3f\n",a,b, fmod(a,b));
     return 0;}}
-
+// Easy way to show error for wrong input. eg wrong operator choosen
 else
-  {printf("Wrong operator or error while choosing numbers");
-  return 0;}
+  {printf("Invalid Input");
+  return 1;}
 }
 
